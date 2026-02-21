@@ -164,6 +164,7 @@ export function Footer() {
               </span>
             </p>
             <div className="flex items-center gap-6">
+              <Link href="/sitemap.xml" className="text-slate-400 hover:text-amber-600 text-sm transition-colors">Sitemap</Link>
               <Link href="/privacy-policy" className="text-slate-400 hover:text-amber-600 text-sm transition-colors">Privacy</Link>
               <Link href="/terms-and-conditions" className="text-slate-400 hover:text-amber-600 text-sm transition-colors">Terms</Link>
             </div>

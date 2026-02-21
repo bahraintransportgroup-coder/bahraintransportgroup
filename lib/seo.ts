@@ -148,7 +148,7 @@ export function getSemanticEntityGraph(url: string, faqs?: FAQ[], breadcrumbs?: 
       member: personSchemas.map(p => ({ '@id': p['@id'] })),
     },
     {
-      '@type': 'TaxiService',
+      '@type': ['LocalBusiness', 'TaxiService'],
       '@id': 'https://bahraintransportgroup.com/#localbusiness',
       name: 'Bahrain Transport Group',
       image: 'https://bahraintransportgroup.com/favicon.svg',
@@ -221,7 +221,7 @@ export function getSemanticEntityGraph(url: string, faqs?: FAQ[], breadcrumbs?: 
       about: isAuthorPage ? { '@id': `https://bahraintransportgroup.com/#${currentAuthorSlug}` } : {
         '@id': 'https://bahraintransportgroup.com/#organization',
       },
-      reviewedBy: !isAuthorPage ? { '@id': 'https://bahraintransportgroup.com/#zahra-al-bahraini' } : undefined,
+      author: !isAuthorPage ? { '@id': 'https://bahraintransportgroup.com/#zahra-al-bahraini' } : undefined,
       mainEntity: isAuthorPage ? { '@id': `https://bahraintransportgroup.com/#${currentAuthorSlug}` } : undefined,
       speakable: {
         '@type': 'SpeakableSpecification',
