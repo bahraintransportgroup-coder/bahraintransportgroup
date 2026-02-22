@@ -6,6 +6,7 @@ import { Footer } from '@/components/footer';
 import { StructuredData } from '@/components/structured-data';
 import { Toaster } from 'sonner';
 import { PromoPopup } from '@/components/promo-popup';
+import { WhatsAppButton } from '@/components/whatsapp-button';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -59,6 +60,7 @@ export default function RootLayout({
         </div>
         <Toaster position="top-right" theme="light" />
         <PromoPopup />
+        <WhatsAppButton />
       </body>
     </html>
   );
