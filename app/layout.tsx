@@ -5,8 +5,9 @@ import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 import { StructuredData } from '@/components/structured-data';
 import { Toaster } from 'sonner';
-import { PromoPopup } from '@/components/promo-popup';
+
 import { WhatsAppButton } from '@/components/whatsapp-button';
+import { InternalLinks } from '@/components/internal-links';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://bahraintransportgroup.com'),
   title: 'Bahrain Transport Group | #1 Rated 24/7 Fixed-Rate Taxi & Airport Transfers',
   description: 'Skip the Uber surge. Bahrain Transport Group offers 100% fixed-rate taxi services. Guaranteed 24/7 Airport Transfers, VIP Corporate travel, and "No-Switch" Saudi Causeway crossings since 2014.',
-  keywords: 'Bahrain Transport Group, taxi service bahrain, airport transfer bahrain, saudi causeway taxi, fixed rate taxi manama, reliable taxi bahrain, best way to get around bahrain',
+  keywords: 'taxi service near me, transport bahrain, taxi company near me, bah taxi, bah transportation, local cab service near me, 24 hour taxi near me, bah airport pickup, bahrain transport group, airport transfer bahrain, saudi causeway taxi, fixed rate taxi manama',
   alternates: {
     canonical: '/',
   },
@@ -55,11 +56,12 @@ export default function RootLayout({
         <main id="main-content-area" className="min-h-screen">
           {children}
         </main>
+        <InternalLinks />
         <div id="site-footer-container">
           <Footer />
         </div>
         <Toaster position="top-right" theme="light" />
-        <PromoPopup />
+
         <WhatsAppButton />
       </body>
     </html>

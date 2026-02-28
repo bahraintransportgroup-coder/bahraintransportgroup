@@ -22,7 +22,7 @@ export function generateSEO({
     metadataBase: new URL('https://bahraintransportgroup.com'),
     title: fullTitle,
     description,
-    keywords: keywords || 'taxi service bahrain, bahrain taxi, airport taxi bahrain',
+    keywords: keywords || 'taxi service near me, transport bahrain, taxi company near me, bah taxi, bah transportation, local cab service near me, 24 hour taxi near me, bah airport pickup, bahrain airport taxi, taxi service bahrain',
     authors: [{ name: siteName }],
     openGraph: {
       title: fullTitle,

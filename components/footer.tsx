@@ -143,7 +143,7 @@ export function Footer() {
 
           <div>
             <h4 className="text-slate-900 font-semibold mb-4">Location Map</h4>
-            <div className="w-full h-48 rounded-xl overflow-hidden rounded-xl border border-slate-200 shadow-sm relative">
+            <div className="w-full h-48 rounded-xl overflow-hidden rounded-xl border border-slate-200 shadow-sm relative mb-4">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114510.82583856236!2d50.45719369931792!3d26.242781442008888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49a5826fdb2bb1%3A0xe9f79b1adfb4f3c0!2sManama%2C%20Bahrain!5e0!3m2!1sen!2sus!4v1714420000000!5m2!1sen!2sus"
                 className="w-full h-full border-0 absolute inset-0"
@@ -152,6 +152,9 @@ export function Footer() {
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
+            <p className="text-[10px] text-slate-400 leading-tight">
+              Looking for a <strong>taxi service near me</strong> or a reliable <strong>local cab service near me</strong>? Save our <strong>taxi booking number</strong>. As a leading <strong>transport bahrain</strong> provider, we offer the fastest <strong>bah taxi</strong> and <strong>city taxi number</strong> dispatch across all areas.
+            </p>
           </div>
         </div>
 

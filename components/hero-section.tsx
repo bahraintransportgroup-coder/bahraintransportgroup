@@ -95,6 +95,22 @@ export function HeroSection({ title, description }: HeroSectionProps) {
             </p>
           </div>
 
+          {/* Rank & Rent Local SEO Block */}
+          {!title && (
+            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-left w-full max-w-3xl mx-auto mb-16 shadow-sm">
+              <h4 className="text-lg font-bold text-slate-800 mb-2">Looking for a "taxi service near me" in Bahrain?</h4>
+              <p className="text-slate-600 text-sm leading-relaxed mb-3">
+                Whether you need a <strong>24 hour taxi near me</strong>, an <strong>affordable taxi near me</strong>, or the most reliable <strong>local cab service near me</strong>, Bahrain Transport Group is your top choice. Give us a call at our official <strong>city taxi number</strong> or use the <strong>taxi booking number</strong> provided to get an instant <strong>transport bahrain</strong> quote.
+              </p>
+              <div className="flex items-center text-xs text-slate-500 gap-2 flex-wrap">
+                <span className="px-2 py-1 bg-white border border-slate-200 rounded-md">bah taxi</span>
+                <span className="px-2 py-1 bg-white border border-slate-200 rounded-md">bah transportation</span>
+                <span className="px-2 py-1 bg-white border border-slate-200 rounded-md">cabs near me</span>
+                <span className="px-2 py-1 bg-white border border-slate-200 rounded-md">bah airport pickup</span>
+              </div>
+            </div>
+          )}
+
           <div className="flex flex-wrap justify-center gap-8 md:gap-16 w-full border-t border-slate-200 pt-10">
             {[
               { number: '10+', label: 'Years Experience' },
