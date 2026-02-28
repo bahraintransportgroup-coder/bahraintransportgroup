@@ -13,7 +13,7 @@ interface HeroSectionProps {
 export function HeroSection({ title, description }: HeroSectionProps) {
   const pathname = usePathname();
   const whatsappMsg = `Hello Bahrain Transport Group! I am on this page: https://bahraintransportgroup.com${pathname} and I would like to book a ride.`;
-  const whatsappLink = `https://wa.me/13073464572?text=${encodeURIComponent(whatsappMsg)}`;
+  const whatsappLink = `https://wa.me/923176243861?text=${encodeURIComponent(whatsappMsg)}`;
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
       <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-white to-slate-50" />

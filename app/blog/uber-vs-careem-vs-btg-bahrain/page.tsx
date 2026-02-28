@@ -176,7 +176,7 @@ export default function ComparisonPost() {
                                 </div>
                             </div>
                             <div className="mt-10 pt-8 border-t border-white/10">
-                                <GradientButton href="https://wa.me/13073464572?text=I%20am%20comparing%20Uber%20vs%20BTG%20and%20want%20to%20book%20a%20reliable%20ride." variant="whatsapp" className="w-full sm:w-auto" external>
+                                <GradientButton href="https://wa.me/923176243861?text=I%20am%20comparing%20Uber%20vs%20BTG%20and%20want%20to%20book%20a%20reliable%20ride." variant="whatsapp" className="w-full sm:w-auto" external>
                                     Book This Reliable Alternative
                                 </GradientButton>
                             </div>

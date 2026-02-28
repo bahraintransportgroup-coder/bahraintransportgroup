@@ -203,7 +203,7 @@ export default function UberVsTaxiPage() {
                         </p>
 
                         <div className="flex justify-center mb-16">
-                            <GradientButton href="https://wa.me/13073464572?text=Hello%21%20I%20am%20reading%20the%20Uber%20vs%20Taxi%20blog%20post%20and%20I%20would%20like%20to%20book%20a%20ride." variant="whatsapp" className="w-full sm:w-auto text-lg px-8 py-4" external>
+                            <GradientButton href="https://wa.me/923176243861?text=Hello%21%20I%20am%20reading%20the%20Uber%20vs%20Taxi%20blog%20post%20and%20I%20would%20like%20to%20book%20a%20ride." variant="whatsapp" className="w-full sm:w-auto text-lg px-8 py-4" external>
                                 Skip the Apps: Book on WhatsApp 24/7
                             </GradientButton>
                         </div>

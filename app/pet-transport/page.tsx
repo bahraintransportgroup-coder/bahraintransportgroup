@@ -37,7 +37,7 @@ const features = [
 ];
 
 export default function PetTransportPage() {
-    const whatsappLink = `https://wa.me/13073464572?text=${encodeURIComponent('Hello Bahrain Transport Group! I would like to book a Pet-Friendly ride. What are your rates?')}`;
+    const whatsappLink = `https://wa.me/923176243861?text=${encodeURIComponent('Hello Bahrain Transport Group! I would like to book a Pet-Friendly ride. What are your rates?')}`;
 
     return (
         <div className="bg-white">

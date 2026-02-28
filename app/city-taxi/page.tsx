@@ -73,7 +73,7 @@ const cityAreas = [
 export default function CityTaxiPage() {
   const pathname = '/city-taxi';
   const whatsappMsg = `Hello Bahrain Transport Group! I want to book a city taxi. I am looking at: https://bahraintransportgroup.com${pathname}`;
-  const whatsappLink = `https://wa.me/13073464572?text=${encodeURIComponent(whatsappMsg)}`;
+  const whatsappLink = `https://wa.me/923176243861?text=${encodeURIComponent(whatsappMsg)}`;
 
   return (
     <div className="bg-white">

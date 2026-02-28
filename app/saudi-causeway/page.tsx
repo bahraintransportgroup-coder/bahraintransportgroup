@@ -40,7 +40,7 @@ import { getSemanticEntityGraph } from '@/lib/seo';
 export default function SaudiCausewayPage() {
     const pathname = '/saudi-causeway';
     const whatsappMsg = `Hello Bahrain Transport Group! I want to book a taxi for the Saudi Causeway. I am looking at: https://bahraintransportgroup.com${pathname}`;
-    const whatsappLink = `https://wa.me/13073464572?text=${encodeURIComponent(whatsappMsg)}`;
+    const whatsappLink = `https://wa.me/923176243861?text=${encodeURIComponent(whatsappMsg)}`;
 
     const faqs = [
         {
@@ -278,7 +278,7 @@ export default function SaudiCausewayPage() {
                         <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
                             <h3 className="text-xl font-bold text-slate-900 mb-3">What is the price of a taxi from Bahrain to Dammam?</h3>
                             <p className="text-slate-700">
-                                Bahrain Transport Group provides a 100% fixed-rate pricing model for all trips from Bahrain to Dammam via the King Fahad Causeway. Unlike metered taxis that charge based on border traffic delays, our quoted price includes all tolls, insurance, and waiting times. To get the exact fixed fare for your specific vehicle requirement (Economy, VIP Black Car, or 7-Seater), contact our 24/7 dispatch via WhatsApp at +1 (307) 346-4572.
+                                Bahrain Transport Group provides a 100% fixed-rate pricing model for all trips from Bahrain to Dammam via the King Fahad Causeway. Unlike metered taxis that charge based on border traffic delays, our quoted price includes all tolls, insurance, and waiting times. To get the exact fixed fare for your specific vehicle requirement (Economy, VIP Black Car, or 7-Seater), contact our 24/7 dispatch via WhatsApp at +92 317 624 3861.
                             </p>
                         </div>
 

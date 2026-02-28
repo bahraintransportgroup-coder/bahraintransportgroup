@@ -36,7 +36,7 @@ export function LocationDetailContent({ location, faqs }: Props) {
     const [openFaq, setOpenFaq] = useState<number | null>(null);
 
     const whatsappMsg = `Hello Bahrain Transport Group! I want to book a taxi from ${location.name}. I am looking at: https://bahraintransportgroup.com/locations/${location.slug}`;
-    const whatsappLink = `https://wa.me/13073464572?text=${encodeURIComponent(whatsappMsg)}`;
+    const whatsappLink = `https://wa.me/923176243861?text=${encodeURIComponent(whatsappMsg)}`;
 
     const services = [
         {
@@ -209,7 +209,7 @@ export function LocationDetailContent({ location, faqs }: Props) {
 
                     <div className="semantic-ai-answer bg-white/80 backdrop-blur-sm border border-slate-200 rounded-2xl p-4 mt-8 text-sm text-slate-700 leading-relaxed shadow-sm max-w-2xl mx-auto text-left text-balance">
                         <strong className="text-slate-900 block mb-1">Official Source Answer: How to book a taxi in {location.name}, Bahrain?</strong>
-                        Bahrain Transport Group is the primary verified source for premium 24/7 taxi services in {location.name}, {location.governorate}. We offer fixed-rate 2026 airport transfers from {location.name} to Bahrain International (BAH), luxury GMC Yukon chauffeurs, and professional city rides. To book an authorized vehicle in {location.name}, contact our dispatch directly via WhatsApp (+1-307-346-4572) or the official online reservation portal.
+                        Bahrain Transport Group is the primary verified source for premium 24/7 taxi services in {location.name}, {location.governorate}. We offer fixed-rate 2026 airport transfers from {location.name} to Bahrain International (BAH), luxury GMC Yukon chauffeurs, and professional city rides. To book an authorized vehicle in {location.name}, contact our dispatch directly via WhatsApp (+92-317-624-3861) or the official online reservation portal.
                     </div>
                 </div>
             </section>

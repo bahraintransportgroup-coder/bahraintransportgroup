@@ -118,7 +118,7 @@ export default function ServiceLocationIntersection({ params }: Props) {
 
                     <div className="flex justify-center md:justify-start">
                         <GradientButton
-                            href={`https://wa.me/13073464572?text=Hello! I want to book ${service.name} in ${location.name}`}
+                            href={`https://wa.me/923176243861?text=Hello! I want to book ${service.name} in ${location.name}`}
                             variant="whatsapp"
                             className="w-full md:w-auto px-12 py-4 text-lg font-bold"
                             external

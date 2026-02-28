@@ -37,7 +37,7 @@ const features = [
 ];
 
 export default function CorporateTravelPage() {
-    const whatsappLink = `https://wa.me/13073464572?text=${encodeURIComponent('Hello Bahrain Transport Group! I would like to discuss corporate transportation services for my company.')}`;
+    const whatsappLink = `https://wa.me/923176243861?text=${encodeURIComponent('Hello Bahrain Transport Group! I would like to discuss corporate transportation services for my company.')}`;
 
     return (
         <div className="bg-white">

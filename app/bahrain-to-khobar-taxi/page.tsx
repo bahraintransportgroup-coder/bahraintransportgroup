@@ -12,7 +12,7 @@ export const metadata: Metadata = generateSEO({
 });
 
 export default function KhobarRoutePage() {
-    const whatsappLink = "https://wa.me/13073464572?text=I%20want%20to%20book%20a%20taxi%20from%20Bahrain%20to%20Khobar.%20Please%20provide%20a%20fixed%20quote.";
+    const whatsappLink = "https://wa.me/923176243861?text=I%20want%20to%20book%20a%20taxi%20from%20Bahrain%20to%20Khobar.%20Please%20provide%20a%20fixed%20quote.";
 
     return (
         <div className="bg-white">

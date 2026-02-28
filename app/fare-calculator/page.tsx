@@ -151,7 +151,7 @@ export default function FareCalculatorPage() {
                                     <p className="flex items-center gap-2"><CheckCircle className="w-4 h-4" /> No surge pricing applied</p>
                                 </div>
                                 <GradientButton
-                                    href={`https://wa.me/13073464572?text=Hello!%20I%20used%20your%20fare%20calculator.%20I%20need%20a%20ride%20from%20${pickup}%20to%20${dropoff}%20in%20a%20${vehicle}.%20The%20estimate%20was%20BHD%20${estimatedFare}.`}
+                                    href={`https://wa.me/923176243861?text=Hello!%20I%20used%20your%20fare%20calculator.%20I%20need%20a%20ride%20from%20${pickup}%20to%20${dropoff}%20in%20a%20${vehicle}.%20The%20estimate%20was%20BHD%20${estimatedFare}.`}
                                     variant="whatsapp"
                                     className="w-full py-4 font-bold bg-white text-green-700 hover:bg-slate-50"
                                     external

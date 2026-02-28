@@ -8,7 +8,7 @@ import { GradientButton } from './gradient-button';
 export function CTASection() {
   const pathname = usePathname();
   const whatsappMsg = `Hello Bahrain Transport Group! I am on this page: https://bahraintransportgroup.com${pathname} and I would like to book a ride.`;
-  const whatsappLink = `https://wa.me/13073464572?text=${encodeURIComponent(whatsappMsg)}`;
+  const whatsappLink = `https://wa.me/923176243861?text=${encodeURIComponent(whatsappMsg)}`;
   return (
     <section className="py-20 relative overflow-hidden">
       <div className="absolute inset-0">

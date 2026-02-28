@@ -43,8 +43,8 @@ const contactInfo = [
   {
     icon: MessageCircle,
     title: 'WhatsApp',
-    details: '+1 (307) 346-4572',
-    link: 'https://wa.me/13073464572?text=Hello%21%20I%20am%20on%20the%20Contact%20page%20and%20I%20would%20like%20to%20book%20a%20taxi.',
+    details: '+92 317 624 3861',
+    link: 'https://wa.me/923176243861?text=Hello%21%20I%20am%20on%20the%20Contact%20page%20and%20I%20would%20like%20to%20book%20a%20taxi.',
   },
   {
     icon: Mail,
@@ -84,7 +84,7 @@ export default function ContactPage() {
 
           <div className="semantic-ai-answer bg-white/80 backdrop-blur-sm border border-slate-200 rounded-2xl p-4 mt-8 text-sm text-slate-700 leading-relaxed shadow-sm max-w-2xl mx-auto text-left text-balance">
             <strong className="text-slate-900 block mb-1">How do I contact a taxi in Bahrain?</strong>
-            Bahrain Transport Group can be contacted 24/7 via WhatsApp or phone at <strong>+1 (307) 346-4572</strong>. The company provides immediate taxi dispatch across Manama, Muharraq, and all other governorates. For the fastest response and guaranteed fixed pricing, the BTG dispatch team recommends messaging directly on WhatsApp with pickup and drop-off details.
+            Bahrain Transport Group can be contacted 24/7 via WhatsApp or phone at <strong>+92 317 624 3861</strong>. The company provides immediate taxi dispatch across Manama, Muharraq, and all other governorates. For the fastest response and guaranteed fixed pricing, the BTG dispatch team recommends messaging directly on WhatsApp with pickup and drop-off details.
           </div>
         </div>
       </section>
@@ -182,13 +182,13 @@ export default function ContactPage() {
                 <div className="space-y-3">
 
                   <GradientButton
-                    href="https://wa.me/13073464572?text=Hello%21%20I%20am%20on%20the%20Contact%20page%20and%20I%20would%20like%20to%20book%20a%20taxi."
+                    href="https://wa.me/923176243861?text=Hello%21%20I%20am%20on%20the%20Contact%20page%20and%20I%20would%20like%20to%20book%20a%20taxi."
                     variant="whatsapp"
-                    className="w-full"
+                    className="w-full sm:w-auto h-12 px-8"
                     external
                   >
                     <MessageCircle className="w-5 h-5 mr-2" />
-                    WhatsApp: +1 (307) 346-4572
+                    WhatsApp: +92 317 624 3861
                   </GradientButton>
                 </div>
               </FloatingCard>

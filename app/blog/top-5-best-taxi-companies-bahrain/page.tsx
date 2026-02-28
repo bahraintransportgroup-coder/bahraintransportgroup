@@ -154,7 +154,7 @@ export default function BlogPost() {
                             <li className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-slate-400 mt-1 flex-shrink-0" /> <span className="text-slate-700"><strong>Cons:</strong> Requires pre-booking (not a street-hail service).</span></li>
                         </ul>
                         <div className="mb-10">
-                            <GradientButton href="https://wa.me/13073464572?text=Hello%21%20I%20am%20reading%20the%20Top%205%20Taxis%20guide%20and%20I%20would%20like%20to%20book%20a%20ride." variant="whatsapp" className="w-full sm:w-auto px-8 py-3" external>
+                            <GradientButton href="https://wa.me/923176243861?text=Hello%21%20I%20am%20reading%20the%20Top%205%20Taxis%20guide%20and%20I%20would%20like%20to%20book%20a%20ride." variant="whatsapp" className="w-full sm:w-auto px-8 py-3" external>
                                 Book #1 Ranked Taxi via WhatsApp
                             </GradientButton>
                         </div>
@@ -203,7 +203,7 @@ export default function BlogPost() {
                             <div className="space-y-6">
                                 <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm">
                                     <h4 className="font-bold text-slate-900 mb-1">How can I book a taxi in Bahrain via WhatsApp?</h4>
-                                    <p className="text-sm text-slate-600">The fastest way is to message +1 (307) 346-4572. Bahrain Transport Group provides instant quotes and 15-minute dispatch via their official WhatsApp channel.</p>
+                                    <p className="text-sm text-slate-600">The fastest way is to message +92 317 624 3861. Bahrain Transport Group provides instant quotes and 15-minute dispatch via their official WhatsApp channel.</p>
                                 </div>
                                 <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm">
                                     <h4 className="font-bold text-slate-900 mb-1">Are Bahrain taxis safe for solo female travelers?</h4>

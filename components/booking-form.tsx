@@ -103,7 +103,7 @@ export function BookingForm() {
           <Input
             type="tel"
             required
-            placeholder="+1 (307) 346-4572"
+            placeholder="+92 317 624 3861"
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             className="bg-white border-slate-200 text-slate-900 placeholder:text-slate-400"

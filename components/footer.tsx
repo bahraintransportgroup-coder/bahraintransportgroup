@@ -113,8 +113,8 @@ export function Footer() {
                 <Phone className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-slate-500 text-xs uppercase tracking-tighter">Phone / WhatsApp (24/7)</p>
-                  <a href="https://wa.me/13073464572" className="text-slate-900 font-bold hover:text-amber-600 transition-colors text-sm" itemProp="telephone">
-                    +1 (307) 346-4572
+                  <a href="https://wa.me/923176243861" className="text-slate-900 font-bold hover:text-amber-600 transition-colors text-sm" itemProp="telephone">
+                    +92 317 624 3861
                   </a>
                 </div>
               </li>

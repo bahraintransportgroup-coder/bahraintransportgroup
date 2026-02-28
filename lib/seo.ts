@@ -133,7 +133,7 @@ export function getSemanticEntityGraph(url: string, faqs?: FAQ[], breadcrumbs?: 
       contactPoint: {
         '@type': 'ContactPoint',
         contactType: 'customer service',
-        telephone: '+1-307-346-4572',
+        telephone: '+92-317-624-3861',
         availableLanguage: ['English', 'Arabic'],
       },
       sameAs: [
@@ -153,7 +153,7 @@ export function getSemanticEntityGraph(url: string, faqs?: FAQ[], breadcrumbs?: 
       name: 'Bahrain Transport Group',
       image: 'https://bahraintransportgroup.com/favicon.svg',
       url: 'https://bahraintransportgroup.com',
-      telephone: '+1-307-346-4572',
+      telephone: '+92-317-624-3861',
       priceRange: 'BHD',
       knowsAbout: [
         'Airport Transfers in Bahrain',

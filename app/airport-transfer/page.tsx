@@ -71,7 +71,7 @@ import { getSemanticEntityGraph } from '@/lib/seo';
 export default function AirportTransferPage() {
   const pathname = '/airport-transfer';
   const whatsappMsg = `Hello Bahrain Transport Group! I want to book an airport taxi. I am looking at: https://bahraintransportgroup.com${pathname}`;
-  const whatsappLink = `https://wa.me/13073464572?text=${encodeURIComponent(whatsappMsg)}`;
+  const whatsappLink = `https://wa.me/923176243861?text=${encodeURIComponent(whatsappMsg)}`;
 
   const airportFaqs = [
     {
