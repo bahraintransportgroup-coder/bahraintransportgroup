@@ -1,20 +1,17 @@
 const fs = require('fs');
 const path = require('path');
 
-const dir = 'c:\\Users\\Latitude 7420\\Downloads\\Bahrain Taxi';
+const dir = 'f:\\Bahrain Taxi';
 
 function replaceInFile(filePath) {
     let content = fs.readFileSync(filePath, 'utf8');
     let original = content;
 
     // Replace wa.me links
-    content = content.replace(/13073464572/g, '923176243861');
+    content = content.replace(/966569487569/g, '966569487569');
 
-    // Replace display text +1 (307) 346-4572
-    content = content.replace(/\+1\s*\(307\)\s*346-4572/g, '+92 317 624 3861');
-
-    // Replace seo text +1-307-346-4572
-    content = content.replace(/\+1-307-346-4572/g, '+92-317-624-3861');
+    // Replace display text +966 569487569
+    content = content.replace(/\+92\s*317\s*624\s*3861/g, '+966 569487569');
 
     if (content !== original) {
         fs.writeFileSync(filePath, content, 'utf8');
@@ -32,7 +29,7 @@ function walk(currDir) {
                 walk(file);
             }
         } else {
-            if (file.endsWith('.tsx') || file.endsWith('.ts') || file.endsWith('.txt')) {
+            if (file.endsWith('.tsx') || file.endsWith('.ts') || file.endsWith('.txt') || file.endsWith('.js') || file.endsWith('.json')) {
                 replaceInFile(file);
             }
         }

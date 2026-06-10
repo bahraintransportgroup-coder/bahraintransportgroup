@@ -1,38 +1,61 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { supabaseAdmin } from '@/lib/supabase';
+
+export const runtime = 'nodejs';
 
 export async function POST(req: Request) {
-    try {
-        const body = await req.json();
-        const {
-            name,
-            email,
-            phone,
-            pickup_location,
-            dropoff_location,
-            service_type,
-            pickup_date,
-            pickup_time,
-            passengers,
-            message,
-        } = body;
+  try {
+    const body = await req.json();
+    const {
+      name,
+      email,
+      phone,
+      pickup_location,
+      dropoff_location,
+      service_type,
+      pickup_date,
+      pickup_time,
+      passengers,
+      message,
+    } = body;
 
-        const transporter = nodemailer.createTransport({
-            host: process.env.EMAIL_SERVER_HOST,
-            port: Number(process.env.EMAIL_SERVER_PORT),
-            secure: true, // true for 465, false for other ports
-            auth: {
-                user: process.env.EMAIL_SERVER_USER,
-                pass: process.env.EMAIL_SERVER_PASSWORD,
-            },
-        });
+    // Save booking to database
+    const { error: dbError } = await supabaseAdmin.from('bookings').insert([{
+      name,
+      email,
+      phone,
+      pickup_location,
+      dropoff_location,
+      service_type,
+      pickup_date,
+      pickup_time,
+      passengers: passengers || 1,
+      message,
+      status: 'pending',
+    }]);
 
-        const mailOptions = {
-            from: `"${name}" <${process.env.EMAIL_FROM_ADDRESS}>`,
-            to: process.env.EMAIL_TO_ADDRESS,
-            replyTo: email,
-            subject: `New Booking Request: ${service_type} from ${name}`,
-            text: `
+    if (dbError) {
+      console.error('DB insert error:', dbError);
+    }
+
+    // Send email notification
+    const transporter = nodemailer.createTransport({
+      host: process.env.EMAIL_SERVER_HOST,
+      port: Number(process.env.EMAIL_SERVER_PORT),
+      secure: true,
+      auth: {
+        user: process.env.EMAIL_SERVER_USER,
+        pass: process.env.EMAIL_SERVER_PASSWORD,
+      },
+    });
+
+    const mailOptions = {
+      from: `"${name}" <${process.env.EMAIL_FROM_ADDRESS}>`,
+      to: process.env.EMAIL_TO_ADDRESS,
+      replyTo: email,
+      subject: `New Booking Request: ${service_type} from ${name}`,
+      text: `
 New Booking Request Received:
 
 Name: ${name}
@@ -48,10 +71,10 @@ Passengers: ${passengers}
 Additional Notes:
 ${message || 'None provided'}
       `,
-            html: `
+      html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px;">
           <h2 style="color: #d97706; margin-bottom: 24px; text-align: center;">New Booking Request</h2>
-          
+
           <table style="width: 100%; border-collapse: collapse;">
             <tr>
               <td style="padding: 8px 0; font-weight: bold; border-bottom: 1px solid #f1f5f9;">Full Name:</td>
@@ -93,22 +116,22 @@ ${message || 'None provided'}
               ${message || 'None provided'}
             </div>
           </div>
-          
+
           <div style="margin-top: 24px; text-align: center; font-size: 12px; color: #64748b;">
             This request was submitted via bahraintransportgroup.com
           </div>
         </div>
       `,
-        };
+    };
 
-        await transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailOptions);
 
-        return NextResponse.json({ success: true, message: 'Email sent successfully' });
-    } catch (error) {
-        console.error('Email error:', error);
-        return NextResponse.json(
-            { success: false, error: 'Failed to send email' },
-            { status: 500 }
-        );
-    }
+    return NextResponse.json({ success: true, message: 'Booking submitted successfully' });
+  } catch (error) {
+    console.error('Booking error:', error);
+    return NextResponse.json(
+      { success: false, error: 'Failed to submit booking' },
+      { status: 500 }
+    );
+  }
 }

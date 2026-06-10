@@ -5,7 +5,6 @@ import { GradientButton } from './gradient-button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { supabase } from '@/lib/supabase';
 import { toast } from 'sonner';
 
 export function BookingForm() {
@@ -28,28 +27,13 @@ export function BookingForm() {
     setLoading(true);
 
     try {
-      const { error: dbError } = await supabase.from('booking_requests').insert([
-        {
-          ...formData,
-          passengers: parseInt(formData.passengers),
-          status: 'pending',
-        },
-      ]);
-
-      if (dbError) throw dbError;
-
-      // Send email notification
-      const emailResponse = await fetch('/api/send-booking', {
+      const response = await fetch('/api/send-booking', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
-      if (!emailResponse.ok) {
-        console.warn('Database save successful, but email notification failed.');
-      }
+      if (!response.ok) throw new Error('Submission failed');
 
       toast.success('Booking request submitted successfully! We will contact you shortly.');
       setFormData({
@@ -103,7 +87,7 @@ export function BookingForm() {
           <Input
             type="tel"
             required
-            placeholder="+92 317 624 3861"
+            placeholder="+966 569487569"
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             className="bg-white border-slate-200 text-slate-900 placeholder:text-slate-400"
