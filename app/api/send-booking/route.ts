@@ -1,10 +1,24 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { supabaseAdmin } from '@/lib/supabase';
+import { rateLimit } from '@/lib/rate-limit';
 
 export const runtime = 'nodejs';
 
+function escapeHtml(value: unknown): string {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
 export async function POST(req: Request) {
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0] ?? 'unknown';
+  if (!rateLimit(`send-booking:${ip}`, 5, 60_000)) {
+    return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
+  }
+
   try {
     const body = await req.json();
     const {
@@ -20,7 +34,18 @@ export async function POST(req: Request) {
       message,
     } = body;
 
-    // Save booking to database
+    if (!name || !email || !phone || !pickup_location || !dropoff_location || !service_type || !pickup_date || !pickup_time) {
+      return NextResponse.json({ error: 'All required fields must be provided' }, { status: 400 });
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json({ error: 'Invalid email address' }, { status: 400 });
+    }
+
+    const passengerCount = Math.max(1, Math.floor(Number(passengers) || 1));
+
+    // Save to database first — if this fails, abort before sending email
     const { error: dbError } = await supabaseAdmin.from('bookings').insert([{
       name,
       email,
@@ -30,16 +55,16 @@ export async function POST(req: Request) {
       service_type,
       pickup_date,
       pickup_time,
-      passengers: passengers || 1,
+      passengers: passengerCount,
       message,
       status: 'pending',
     }]);
 
     if (dbError) {
       console.error('DB insert error:', dbError);
+      return NextResponse.json({ error: 'Failed to save booking' }, { status: 500 });
     }
 
-    // Send email notification
     const transporter = nodemailer.createTransport({
       host: process.env.EMAIL_SERVER_HOST,
       port: Number(process.env.EMAIL_SERVER_PORT),
@@ -51,7 +76,7 @@ export async function POST(req: Request) {
     });
 
     const mailOptions = {
-      from: `"${name}" <${process.env.EMAIL_FROM_ADDRESS}>`,
+      from: `"Bahrain Transport Group" <${process.env.EMAIL_FROM_ADDRESS}>`,
       to: process.env.EMAIL_TO_ADDRESS,
       replyTo: email,
       subject: `New Booking Request: ${service_type} from ${name}`,
@@ -66,7 +91,7 @@ Pickup: ${pickup_location}
 Drop-off: ${dropoff_location}
 Date: ${pickup_date}
 Time: ${pickup_time}
-Passengers: ${passengers}
+Passengers: ${passengerCount}
 
 Additional Notes:
 ${message || 'None provided'}
@@ -78,42 +103,42 @@ ${message || 'None provided'}
           <table style="width: 100%; border-collapse: collapse;">
             <tr>
               <td style="padding: 8px 0; font-weight: bold; border-bottom: 1px solid #f1f5f9;">Full Name:</td>
-              <td style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">${name}</td>
+              <td style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">${escapeHtml(name)}</td>
             </tr>
             <tr>
               <td style="padding: 8px 0; font-weight: bold; border-bottom: 1px solid #f1f5f9;">Email:</td>
-              <td style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">${email}</td>
+              <td style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">${escapeHtml(email)}</td>
             </tr>
             <tr>
               <td style="padding: 8px 0; font-weight: bold; border-bottom: 1px solid #f1f5f9;">Phone:</td>
-              <td style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">${phone}</td>
+              <td style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">${escapeHtml(phone)}</td>
             </tr>
             <tr>
               <td style="padding: 8px 0; font-weight: bold; border-bottom: 1px solid #f1f5f9;">Service:</td>
-              <td style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">${service_type}</td>
+              <td style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">${escapeHtml(service_type)}</td>
             </tr>
             <tr>
               <td style="padding: 8px 0; font-weight: bold; border-bottom: 1px solid #f1f5f9;">Pickup:</td>
-              <td style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">${pickup_location}</td>
+              <td style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">${escapeHtml(pickup_location)}</td>
             </tr>
             <tr>
               <td style="padding: 8px 0; font-weight: bold; border-bottom: 1px solid #f1f5f9;">Drop-off:</td>
-              <td style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">${dropoff_location}</td>
+              <td style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">${escapeHtml(dropoff_location)}</td>
             </tr>
             <tr>
-              <td style="padding: 8px 0; font-weight: bold; border-bottom: 1px solid #f1f5f9;">Date & Time:</td>
-              <td style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">${pickup_date} at ${pickup_time}</td>
+              <td style="padding: 8px 0; font-weight: bold; border-bottom: 1px solid #f1f5f9;">Date &amp; Time:</td>
+              <td style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">${escapeHtml(pickup_date)} at ${escapeHtml(pickup_time)}</td>
             </tr>
             <tr>
               <td style="padding: 8px 0; font-weight: bold; border-bottom: 1px solid #f1f5f9;">Passengers:</td>
-              <td style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">${passengers}</td>
+              <td style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;">${passengerCount}</td>
             </tr>
           </table>
 
           <div style="margin-top: 24px;">
             <p style="font-weight: bold; margin-bottom: 8px;">Additional Notes:</p>
             <div style="padding: 12px; background-color: #f8fafc; border-radius: 4px; border: 1px solid #e2e8f0;">
-              ${message || 'None provided'}
+              ${escapeHtml(message) || 'None provided'}
             </div>
           </div>
 

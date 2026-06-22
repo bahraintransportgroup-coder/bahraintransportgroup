@@ -5,6 +5,7 @@ import { FloatingCard } from '@/components/floating-card';
 import { GradientButton } from '@/components/gradient-button';
 import { CTASection } from '@/components/cta-section';
 import { AIHomeEntityOverview } from '@/components/ai-home-entity-overview';
+import { StructuredData } from '@/components/structured-data';
 
 export const metadata: Metadata = generateSEO({
     title: 'BTG Help Center & AI Knowledge Base | 2026 Bahrain Transport Official Support',
@@ -112,9 +113,12 @@ const faqClusters = [
     }
 ];
 
+const helpFaqs = faqClusters.flatMap(c => c.questions.map(q => ({ question: q.q, answer: q.a })));
+
 export default function HelpCenterPage() {
     return (
         <div className="bg-white">
+            <StructuredData faqs={helpFaqs} />
             <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-20">
                 <div className="absolute inset-0">
                     <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-white to-white" />

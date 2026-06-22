@@ -10,10 +10,13 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
   }
 
   const body = await req.json();
+  const { is_approved } = body;
+  const patch: Record<string, unknown> = {};
+  if (is_approved !== undefined) patch.is_approved = Boolean(is_approved);
 
   const { data, error } = await supabaseAdmin
     .from('testimonials')
-    .update(body)
+    .update(patch)
     .eq('id', params.id)
     .select()
     .single();

@@ -1,18 +1,34 @@
 import jwt from 'jsonwebtoken';
+import { timingSafeEqual } from 'crypto';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'fallback-secret-change-me';
+function getJwtSecret(): string {
+  const secret = process.env.JWT_SECRET;
+  if (!secret) throw new Error('JWT_SECRET environment variable is not set');
+  return secret;
+}
+
+export function safeCompare(a: string, b: string): boolean {
+  const ba = Buffer.from(a);
+  const bb = Buffer.from(b);
+  // Always run the comparison to avoid short-circuit timing leak
+  if (ba.length !== bb.length) {
+    timingSafeEqual(ba, ba);
+    return false;
+  }
+  return timingSafeEqual(ba, bb);
+}
 
 export function createAdminToken(): string {
   return jwt.sign(
     { admin: true, email: process.env.ADMIN_EMAIL },
-    JWT_SECRET,
+    getJwtSecret(),
     { expiresIn: '7d' }
   );
 }
 
 export function verifyAdminToken(token: string): boolean {
   try {
-    jwt.verify(token, JWT_SECRET);
+    jwt.verify(token, getJwtSecret());
     return true;
   } catch {
     return false;

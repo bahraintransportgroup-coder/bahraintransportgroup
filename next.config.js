@@ -10,6 +10,25 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 31536000,
   },
+  async redirects() {
+    return [
+      {
+        source: '/routes/bahrain-to-dammam-taxi',
+        destination: '/bahrain-to-dammam-taxi',
+        permanent: true,
+      },
+      {
+        source: '/routes/bahrain-to-khobar-taxi',
+        destination: '/bahrain-to-khobar-taxi',
+        permanent: true,
+      },
+      {
+        source: '/routes/manama-to-riyadh-taxi',
+        destination: '/manama-to-riyadh-taxi',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

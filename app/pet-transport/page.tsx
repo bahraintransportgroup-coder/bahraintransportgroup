@@ -57,7 +57,7 @@ export default function PetTransportPage() {
                         </div>
                         <div className="px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl">
                             <span className="text-[10px] font-mono text-slate-500 block uppercase tracking-widest leading-none mb-1">Last Updated</span>
-                            <span className="text-sm font-bold text-slate-900">February 2026</span>
+                            <span className="text-sm font-bold text-slate-900">June 2026</span>
                         </div>
                     </div>
 

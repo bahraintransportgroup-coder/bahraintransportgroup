@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createAdminToken } from '@/lib/auth';
+import { createAdminToken, safeCompare } from '@/lib/auth';
 
 export const runtime = 'nodejs';
 
@@ -14,7 +14,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Email and password are required' }, { status: 400 });
   }
 
-  if (email !== adminEmail || password !== adminPassword) {
+  if (!adminEmail || !adminPassword || !safeCompare(email, adminEmail) || !safeCompare(password, adminPassword)) {
     return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
   }
 

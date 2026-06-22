@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { GradientButton } from '@/components/gradient-button';
 import { CTASection } from '@/components/cta-section';
 import { Clock, Plane, Car, CheckCircle, TrendingUp } from 'lucide-react';
+import { BlogStructuredData } from '@/components/blog-structured-data';
 
 export const metadata: Metadata = generateSEO({
     title: 'Bahrain to Riyadh: Flight vs. Private Taxi Comparison 2026',
@@ -15,6 +16,13 @@ export const metadata: Metadata = generateSEO({
 export default function ComparisonPage() {
     return (
         <div className="bg-white">
+            <BlogStructuredData
+                title="Bahrain to Riyadh: Flight vs. Private Taxi Comparison 2026"
+                description="Should you fly or drive from Bahrain to Riyadh? We compare travel times, costs, and the convenience of door-to-door VIP transfers versus airport delays."
+                url="https://bahraintransportgroup.com/blog/bahrain-to-riyadh-flight-vs-taxi"
+                datePublished="2026-02-01"
+                dateModified="2026-06-22"
+            />
             <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pb-0">
                 <header className="mb-12 text-center">
                     <div className="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-sm font-semibold rounded-full uppercase tracking-wider mb-6">

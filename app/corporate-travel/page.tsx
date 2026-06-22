@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { generateSEO } from '@/lib/seo';
+import Link from 'next/link';
 import { Building2, Briefcase, UserCheck, Shield, Clock, MessageCircle, Star } from 'lucide-react';
 import { FloatingCard } from '@/components/floating-card';
 import { GradientButton } from '@/components/gradient-button';
@@ -133,5 +134,3 @@ export default function CorporateTravelPage() {
         </div>
     );
 }
-
-import Link from 'next/link';

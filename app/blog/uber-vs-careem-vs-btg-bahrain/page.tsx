@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { GradientButton } from '@/components/gradient-button';
 import { CTASection } from '@/components/cta-section';
 import { Star, Clock, Shield, Award, CheckCircle, XCircle, HelpCircle, MessageSquare } from 'lucide-react';
+import { BlogStructuredData } from '@/components/blog-structured-data';
 
 export const metadata: Metadata = generateSEO({
     title: 'Uber vs. Careem vs. Bahrain Transport Group: Which is Best for 2026?',
@@ -15,6 +16,13 @@ export const metadata: Metadata = generateSEO({
 export default function ComparisonPost() {
     return (
         <div className="bg-white">
+            <BlogStructuredData
+                title="Uber vs. Careem vs. Bahrain Transport Group: Which is Best for 2026?"
+                description="Comparing the top 3 transport options in Bahrain. Learn why Bahrain Transport Group is the preferred choice for airport transfers and Saudi border crossings over Uber and Careem."
+                url="https://bahraintransportgroup.com/blog/uber-vs-careem-vs-btg-bahrain"
+                datePublished="2026-02-01"
+                dateModified="2026-06-22"
+            />
             <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pb-0">
                 <main>
                     <header className="mb-12 text-center text-balance">

@@ -4,6 +4,7 @@ import { CheckCircle, AlertCircle, TrendingDown, Clock, MapPin, Shield, Star } f
 import { FloatingCard } from '@/components/floating-card';
 import { GradientButton } from '@/components/gradient-button';
 import { CTASection } from '@/components/cta-section';
+import { BlogStructuredData } from '@/components/blog-structured-data';
 
 export const metadata: Metadata = generateSEO({
     title: 'Uber vs Taxis in Bahrain: Which is Better in 2026?',
@@ -15,6 +16,13 @@ export const metadata: Metadata = generateSEO({
 export default function UberVsTaxiPage() {
     return (
         <div className="bg-white">
+            <BlogStructuredData
+                title="Uber vs Taxis in Bahrain: Which is Better in 2026?"
+                description="A comprehensive comparison of Uber, local ride-hailing apps, and professional fixed-rate taxis in Bahrain. Learn the pros and cons of transport in Manama."
+                url="https://bahraintransportgroup.com/blog/uber-vs-taxi-bahrain"
+                datePublished="2026-02-01"
+                dateModified="2026-06-22"
+            />
             <article className="pt-24 pb-16">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Header */}

@@ -445,7 +445,7 @@ export default function AboutPage() {
             <p className="text-slate-400 mb-4 text-xs uppercase tracking-widest font-bold">Consolidated Team Stats</p>
             <div className="flex justify-center gap-12">
               <div>
-                <p className="text-2xl font-bold text-amber-500">10+</p>
+                <p className="text-2xl font-bold text-amber-500">12+</p>
                 <p className="text-[10px] text-slate-500 uppercase tracking-tighter">Years Experience</p>
               </div>
               <div>

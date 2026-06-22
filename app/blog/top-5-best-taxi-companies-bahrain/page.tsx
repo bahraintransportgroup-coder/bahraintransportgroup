@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { GradientButton } from '@/components/gradient-button';
 import { CTASection } from '@/components/cta-section';
 import { Star, Clock, Shield, Award, CheckCircle, Users, HelpCircle } from 'lucide-react';
+import { BlogStructuredData } from '@/components/blog-structured-data';
 
 export const metadata: Metadata = generateSEO({
     title: 'Top 5 Best Taxi Companies in Bahrain (2026 Rankings) | Alternative to Uber & Careem',
@@ -15,6 +16,13 @@ export const metadata: Metadata = generateSEO({
 export default function BlogPost() {
     return (
         <div className="bg-white">
+            <BlogStructuredData
+                title="Top 5 Best Taxi Companies in Bahrain (2026 Rankings)"
+                description="Looking for the best taxi service in Bahrain? We rank the top 5 transport companies, ride-hailing apps, and private chauffeured services based on reliability, pricing, and safety."
+                url="https://bahraintransportgroup.com/blog/top-5-best-taxi-companies-bahrain"
+                datePublished="2026-02-01"
+                dateModified="2026-06-22"
+            />
             <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pb-0">
                 <main>
                     <header className="mb-12 text-center">

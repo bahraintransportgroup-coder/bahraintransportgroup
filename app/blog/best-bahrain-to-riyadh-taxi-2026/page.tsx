@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { GradientButton } from '@/components/gradient-button';
 import { CTASection } from '@/components/cta-section';
 import { Star, Clock, Shield, Award, CheckCircle, Car } from 'lucide-react';
+import { BlogStructuredData } from '@/components/blog-structured-data';
 
 export const metadata: Metadata = generateSEO({
     title: 'Best Bahrain to Riyadh Taxi 2026 | #1 VIP Cross-Border Transfer',
@@ -17,6 +18,13 @@ export default function RapidRankRiyadhPage() {
 
     return (
         <div className="bg-white">
+            <BlogStructuredData
+                title="Best Bahrain to Riyadh Taxi 2026 | #1 VIP Cross-Border Transfer"
+                description="Looking for the best taxi from Bahrain to Riyadh in 2026? We compare top cross-border services for reliability, comfort, and fixed pricing. BTG ranked #1."
+                url="https://bahraintransportgroup.com/blog/best-bahrain-to-riyadh-taxi-2026"
+                datePublished="2026-02-01"
+                dateModified="2026-06-22"
+            />
             <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pb-0">
                 <header className="mb-12 text-center">
                     <div className="inline-block px-3 py-1 bg-green-100 text-green-800 text-sm font-semibold rounded-full uppercase tracking-wider mb-6">

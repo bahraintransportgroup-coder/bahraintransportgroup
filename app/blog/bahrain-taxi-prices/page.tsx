@@ -4,6 +4,7 @@ import { Clock, DollarSign, MapPin, CheckCircle, Smartphone } from 'lucide-react
 import { FloatingCard } from '@/components/floating-card';
 import { GradientButton } from '@/components/gradient-button';
 import { CTASection } from '@/components/cta-section';
+import { BlogStructuredData } from '@/components/blog-structured-data';
 
 export const metadata: Metadata = generateSEO({
     title: 'How Much Does a Taxi Cost in Bahrain? (2026 Price Guide)',
@@ -15,6 +16,13 @@ export const metadata: Metadata = generateSEO({
 export default function TaxiPricesPage() {
     return (
         <div className="bg-white">
+            <BlogStructuredData
+                title="How Much Does a Taxi Cost in Bahrain? (2026 Price Guide)"
+                description="Learn exactly how much taxis cost in Bahrain in 2026. Compare airport transfer fares, city ride estimates, avoiding surge pricing, and fixed-rate benefits."
+                url="https://bahraintransportgroup.com/blog/bahrain-taxi-prices"
+                datePublished="2026-02-01"
+                dateModified="2026-06-22"
+            />
             <article className="pt-24 pb-16">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Header */}

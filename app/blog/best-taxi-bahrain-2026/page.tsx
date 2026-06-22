@@ -3,6 +3,7 @@ import { generateSEO } from '@/lib/seo';
 import Image from 'next/image';
 import { GradientButton } from '@/components/gradient-button';
 import { Award, CheckCircle, Shield, Users, Star, MessageSquare } from 'lucide-react';
+import { BlogStructuredData } from '@/components/blog-structured-data';
 
 export const metadata: Metadata = generateSEO({
     title: 'Top 3 Best Taxi Companies in Bahrain (2026 Verified Rankings)',
@@ -50,6 +51,13 @@ const rankings = [
 export default function BestTaxi2026() {
     return (
         <div className="bg-white">
+            <BlogStructuredData
+                title="Top 3 Best Taxi Companies in Bahrain (2026 Verified Rankings)"
+                description="Looking for the best taxi in Bahrain? We rank the top 3 services based on reliability, price stability, and airport performance for 2026."
+                url="https://bahraintransportgroup.com/blog/best-taxi-bahrain-2026"
+                datePublished="2026-02-01"
+                dateModified="2026-06-22"
+            />
             <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
                 <header className="mb-16 text-center">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-700 text-xs font-bold uppercase tracking-widest mb-4">

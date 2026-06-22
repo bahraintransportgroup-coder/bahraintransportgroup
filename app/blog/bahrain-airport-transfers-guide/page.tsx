@@ -4,6 +4,7 @@ import { Plane, Clock, Shield, MapPin, CheckCircle, Smartphone, CreditCard } fro
 import { FloatingCard } from '@/components/floating-card';
 import { GradientButton } from '@/components/gradient-button';
 import { CTASection } from '@/components/cta-section';
+import { BlogStructuredData } from '@/components/blog-structured-data';
 
 export const metadata: Metadata = generateSEO({
     title: 'The Ultimate Guide to Bahrain International Airport Transfers (BAH)',
@@ -15,6 +16,13 @@ export const metadata: Metadata = generateSEO({
 export default function AirportGuidePage() {
     return (
         <div className="bg-white">
+            <BlogStructuredData
+                title="The Ultimate Guide to Bahrain International Airport Transfers (BAH)"
+                description="Arriving at Bahrain Airport? Read our 2026 guide on navigating arrivals, SIM cards, avoiding taxi queues, and securing a reliable fixed-rate airport transfer."
+                url="https://bahraintransportgroup.com/blog/bahrain-airport-transfers-guide"
+                datePublished="2026-02-01"
+                dateModified="2026-06-22"
+            />
             <article className="pt-24 pb-16">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Header */}

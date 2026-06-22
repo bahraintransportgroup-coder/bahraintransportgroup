@@ -81,10 +81,11 @@ export default function FareCalculatorPage() {
 
                             <div className="space-y-6">
                                 <div>
-                                    <label className="block text-sm font-bold text-slate-700 mb-2 flex items-center">
-                                        <MapPin className="w-4 h-4 mr-2 text-green-600" /> Pickup Location
+                                    <label htmlFor="pickup" className="block text-sm font-bold text-slate-700 mb-2 flex items-center">
+                                        <MapPin className="w-4 h-4 mr-2 text-green-600" aria-hidden="true" /> Pickup Location
                                     </label>
                                     <select
+                                        id="pickup"
                                         value={pickup}
                                         onChange={(e) => setPickup(e.target.value)}
                                         className="w-full p-4 rounded-xl border border-slate-300 bg-slate-50 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all"
@@ -97,10 +98,11 @@ export default function FareCalculatorPage() {
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-bold text-slate-700 mb-2 flex items-center">
-                                        <MapPin className="w-4 h-4 mr-2 text-red-600" /> Drop-off Location
+                                    <label htmlFor="dropoff" className="block text-sm font-bold text-slate-700 mb-2 flex items-center">
+                                        <MapPin className="w-4 h-4 mr-2 text-red-600" aria-hidden="true" /> Drop-off Location
                                     </label>
                                     <select
+                                        id="dropoff"
                                         value={dropoff}
                                         onChange={(e) => setDropoff(e.target.value)}
                                         className="w-full p-4 rounded-xl border border-slate-300 bg-slate-50 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all"
@@ -113,10 +115,11 @@ export default function FareCalculatorPage() {
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-bold text-slate-700 mb-2 flex items-center">
-                                        <Car className="w-4 h-4 mr-2 text-blue-600" /> Vehicle Category
+                                    <label htmlFor="vehicle" className="block text-sm font-bold text-slate-700 mb-2 flex items-center">
+                                        <Car className="w-4 h-4 mr-2 text-blue-600" aria-hidden="true" /> Vehicle Category
                                     </label>
                                     <select
+                                        id="vehicle"
                                         value={vehicle}
                                         onChange={(e) => setVehicle(e.target.value)}
                                         className="w-full p-4 rounded-xl border border-slate-300 bg-slate-50 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all"

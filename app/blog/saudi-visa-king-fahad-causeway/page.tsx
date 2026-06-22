@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { GradientButton } from '@/components/gradient-button';
 import { CTASection } from '@/components/cta-section';
 import { Shield, Info, MapPin, CheckCircle, FileText } from 'lucide-react';
+import { BlogStructuredData } from '@/components/blog-structured-data';
 
 export const metadata: Metadata = generateSEO({
     title: 'Saudi Visa & King Fahad Causeway Entry Rules 2026 | BTG Guide',
@@ -15,6 +16,13 @@ export const metadata: Metadata = generateSEO({
 export default function VisaGuidePage() {
     return (
         <div className="bg-white">
+            <BlogStructuredData
+                title="Saudi Visa & King Fahad Causeway Entry Rules 2026 | BTG Guide"
+                description="Essential guide for Saudi Visa requirements, King Fahad Causeway tolls, and entry protocols for travelers crossing from Bahrain to Saudi Arabia by road."
+                url="https://bahraintransportgroup.com/blog/saudi-visa-king-fahad-causeway"
+                datePublished="2026-02-01"
+                dateModified="2026-06-22"
+            />
             <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pb-0">
                 <header className="mb-12">
                     <div className="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full uppercase tracking-wider mb-6">
