@@ -207,6 +207,8 @@ export function Footer({ locale = 'en' }: FooterProps) {
               <li><Link href="/manama-to-riyadh-taxi" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">Bahrain to Riyadh</Link></li>
               <li><Link href="/riyadh-to-bahrain-taxi" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">Riyadh to Bahrain</Link></li>
               <li><Link href="/bahrain-to-khobar-taxi" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">Bahrain to Khobar</Link></li>
+              <li><Link href="/saudi-arabia-airports" className="text-amber-600 font-semibold hover:text-amber-700 transition-colors text-sm">All Saudi Arabia Airports →</Link></li>
+              <li><Link href="/bahrain-to-kuwait-taxi" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">Bahrain to Kuwait</Link></li>
             </ul>
 
             <h4 className="text-slate-900 font-semibold mb-4">Verified Reputation</h4>
