@@ -63,13 +63,43 @@ const vehicles = [
 ];
 
 import { getSemanticEntityGraph } from '@/lib/seo';
+import { getSupabase } from '@/lib/supabase';
+import type { FleetVehicle } from '@/lib/types';
 
-export default function FleetPage() {
+function dbToDisplay(v: FleetVehicle) {
+  return {
+    name: v.name,
+    model: v.type || '',
+    passengers: v.capacity,
+    luggage: 3,
+    features: v.features || [],
+    category: v.type || 'Standard',
+    description: v.description || '',
+    is_available: v.is_available,
+  };
+}
+
+export default async function FleetPage() {
+  let displayVehicles = vehicles.map(v => ({ ...v, is_available: true }));
+
+  try {
+    const { data } = await getSupabase()
+      .from('fleet_vehicles')
+      .select('*')
+      .eq('is_available', true)
+      .order('created_at', { ascending: true });
+    if (data && data.length > 0) {
+      displayVehicles = data.map(dbToDisplay);
+    }
+  } catch {
+    // fall back to hardcoded
+  }
+
   const fleetInventorySchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     "name": "Bahrain Transport Group Fleet",
-    "itemListElement": vehicles.map((v, i) => ({
+    "itemListElement": displayVehicles.map((v, i) => ({
       "@type": "Product",
       "position": i + 1,
       "name": v.name,
@@ -229,7 +259,7 @@ export default function FleetPage() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {vehicles.map((vehicle, index) => (
+            {displayVehicles.map((vehicle, index) => (
               <FloatingCard key={index} delay={index * 0.1}>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="relative h-64 md:h-full rounded-xl overflow-hidden bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center">

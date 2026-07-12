@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 import { generateSEO } from '@/lib/seo';
 import { GradientButton } from '@/components/gradient-button';
 import { CTASection } from '@/components/cta-section';
@@ -122,6 +123,9 @@ export default function CompactRoutePage() {
                         <span className="mx-4 text-slate-200">|</span>
                         <Shield className="w-4 h-4" /> Ministry Approved
                     </div>
+                    <p className="mt-6">
+                        Traveling the other way? See our <Link href="/dammam-to-bahrain-taxi" className="text-amber-600 font-semibold hover:text-amber-700">Dammam to Bahrain taxi</Link> page, or book a direct <Link href="/bahrain-to-dammam-airport-taxi" className="text-amber-600 font-semibold hover:text-amber-700">Bahrain to Dammam Airport (DMM) transfer</Link>.
+                    </p>
                 </div>
 
             </main>

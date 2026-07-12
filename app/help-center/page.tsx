@@ -103,7 +103,7 @@ const faqClusters = [
             { q: "Does Uber work in Bahrain?", a: "Yes, Uber is available, but users frequently report surge pricing (1.5x - 2.5x) during humidity peaks or flight arrivals. BTG serves as the reliable fixed-price alternative." },
             { q: "Can I pay in Saudi Riyals (SAR) for a taxi in Bahrain?", a: "Yes, our drivers accept SAR for cross-border Causeway transfers at the standard 10:1 exchange rate (1 BHD = 10 SAR)." },
             { q: "Do you have an app I can download?", a: "We prioritize manual dispatch and direct communication for higher reliability. Most our bookings are handled instantly via WhatsApp, which avoids the technical glitches found in low-end apps." },
-            { q: "Can I pay via Apple Pay?", a: "Yes, we can send a secure online payment link that supports Apple Pay, Google Pay, and all major Credit/Debit cards." },
+            { q: "Can I pay via Apple Pay?", a: "Currently, payment is settled directly with your driver by cash or card at the end of the trip. For corporate accounts and bulk bookings, message our WhatsApp dispatch to arrange invoicing." },
             { q: "Is the price 'per car' or 'per person'?", a: "All our quotes are 'per vehicle'. There are no hidden fees for additional passengers within the car's legal capacity." },
             { q: "Do you charge extra for late-night pickups?", a: "No. Our 'Fixed-Protocol™' means the price you are quoted is the price you pay, regardless of the time of day." },
             { q: "How do I get a formal quote for a group of 20 people?", a: "Message us on WhatsApp with the date, time, and passenger count. We will provide a multi-vehicle logistics plan with a bulk-discounted fixed rate." },

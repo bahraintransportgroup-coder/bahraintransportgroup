@@ -3,8 +3,109 @@ import { Car, Phone, Mail, MapPin, Facebook, Instagram, Twitter, Linkedin } from
 import { governorates } from '@/lib/locations';
 import { LogoSVG } from './logo-svg';
 
-export function Footer() {
+interface FooterProps {
+  locale?: 'en' | 'ar';
+}
+
+export function Footer({ locale = 'en' }: FooterProps) {
   const currentYear = new Date().getFullYear();
+  const isArabic = locale === 'ar';
+
+  if (isArabic) {
+    return (
+      <footer className="bg-white border-t border-slate-200" dir="rtl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <LogoSVG className="w-12 h-12 rounded-full shrink-0" />
+                <h3 className="text-xl font-bold bg-gradient-to-r from-amber-600 to-orange-700 bg-clip-text text-transparent">
+                  بحرين ترانسبورت جروب
+                </h3>
+              </div>
+              <p className="text-slate-600 text-sm mb-4">
+                أفضل خدمة تاكسي فاخرة في البحرين. متوفرون على مدار 24 ساعة لتوصيل المطار والتنقل داخل المدينة في جميع المحافظات.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-slate-900 font-semibold mb-4">روابط سريعة</h4>
+              <ul className="space-y-2 mb-6">
+                <li><Link href="/ar" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">الرئيسية</Link></li>
+                <li><Link href="/ar/contact" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">احجز تاكسي</Link></li>
+              </ul>
+
+              <h4 className="text-slate-900 font-semibold mb-4 text-xs uppercase tracking-widest text-slate-400">خدماتنا</h4>
+              <ul className="space-y-2">
+                <li><Link href="/ar/airport-transfer" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">توصيل المطار</Link></li>
+                <li><Link href="/ar/city-taxi" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">تاكسي داخل المدينة</Link></li>
+                <li><Link href="/ar/saudi-causeway" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">جسر الملك فهد</Link></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-slate-900 font-semibold mb-4">الأسعار</h4>
+              <ul className="space-y-2 mb-6">
+                <li><Link href="/ar/fare-calculator" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">حاسبة الأجرة</Link></li>
+              </ul>
+
+              <h4 className="text-slate-900 font-semibold mb-4">السمعة الموثقة</h4>
+              <ul className="space-y-2">
+                <li>
+                  <a href="https://trustpilot.com/review/bahraintransportgroup.com" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-amber-600 transition-colors text-sm flex items-center gap-2">
+                    <span className="text-green-500">★</span> 4.9 على Trustpilot
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-slate-900 font-semibold mb-4">معلومات التواصل</h4>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <Phone className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-slate-500 text-xs uppercase tracking-tighter">الهاتف / واتساب (24/7)</p>
+                    <a href="https://wa.me/966569487569" className="text-slate-900 font-bold hover:text-amber-600 transition-colors text-sm" dir="ltr">
+                      +966 569487569
+                    </a>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Mail className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-slate-500 text-xs">الدعم المباشر</p>
+                    <a href="mailto:info@bahraintransportgroup.com" className="text-slate-900 hover:text-amber-600 transition-colors text-sm break-all" dir="ltr">
+                      info@bahraintransportgroup.com
+                    </a>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-slate-900 text-sm font-bold">المكتب الرئيسي</p>
+                    <p className="text-slate-600 text-sm">مبنى 1131، طريق 2113، مجمع 321، المنامة، البحرين</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t border-slate-200 pt-8">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+              <p className="text-slate-500 text-sm">
+                © {currentYear} بحرين ترانسبورت جروب™. جميع الحقوق محفوظة.
+              </p>
+              <div className="flex items-center gap-6">
+                <Link href="/privacy-policy" className="text-slate-400 hover:text-amber-600 text-sm transition-colors">سياسة الخصوصية</Link>
+                <Link href="/terms-and-conditions" className="text-slate-400 hover:text-amber-600 text-sm transition-colors">الشروط والأحكام</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    );
+  }
 
   return (
     <footer className="bg-white border-t border-slate-200">
@@ -76,6 +177,12 @@ export function Footer() {
             <h4 className="text-slate-900 font-semibold mb-4 text-xs uppercase tracking-widest text-slate-400">Our Services</h4>
             <ul className="space-y-2">
               <li><Link href="/airport-transfer" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">Airport Transfers</Link></li>
+              <li><Link href="/city-taxi" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">City Taxi</Link></li>
+              <li><Link href="/corporate-travel" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">Corporate Travel</Link></li>
+              <li><Link href="/hotel-pickup" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">Hotel Pickup</Link></li>
+              <li><Link href="/chauffeur-service" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">Chauffeur Service</Link></li>
+              <li><Link href="/city-tour" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">Hire-by-Hour / City Tours</Link></li>
+              <li><Link href="/wedding-transport" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">Wedding & Event Transport</Link></li>
               <li><Link href="/saudi-causeway" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">Saudi Causeway</Link></li>
               <li><Link href="/student-transport" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">Student Transport</Link></li>
               <li><Link href="/pet-transport" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">Pet-Friendly Rides</Link></li>
@@ -89,6 +196,17 @@ export function Footer() {
               <li><Link href="/fleet" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">Family SUV (7 Seater)</Link></li>
               <li><Link href="/fleet" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">Standard Economy Taxi</Link></li>
               <li><Link href="/fleet" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">Corporate Chauffeur</Link></li>
+            </ul>
+
+            <h4 className="text-slate-900 font-semibold mb-4">Cross-Border Routes</h4>
+            <ul className="space-y-2 mb-6">
+              <li><Link href="/bahrain-to-dammam-taxi" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">Bahrain to Dammam</Link></li>
+              <li><Link href="/dammam-to-bahrain-taxi" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">Dammam to Bahrain</Link></li>
+              <li><Link href="/bahrain-to-dammam-airport-taxi" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">Bahrain to Dammam Airport (DMM)</Link></li>
+              <li><Link href="/dammam-airport-to-bahrain-taxi" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">Dammam Airport (DMM) to Bahrain</Link></li>
+              <li><Link href="/manama-to-riyadh-taxi" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">Bahrain to Riyadh</Link></li>
+              <li><Link href="/riyadh-to-bahrain-taxi" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">Riyadh to Bahrain</Link></li>
+              <li><Link href="/bahrain-to-khobar-taxi" className="text-slate-600 hover:text-amber-600 transition-colors text-sm">Bahrain to Khobar</Link></li>
             </ul>
 
             <h4 className="text-slate-900 font-semibold mb-4">Verified Reputation</h4>

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Plane, Building2, Users, Hotel, UserCheck, Car, Briefcase, ArrowRight } from 'lucide-react';
+import { Plane, Building2, Users, Hotel, UserCheck, Car, Briefcase, ArrowRight, Map, GraduationCap, Dog, Heart } from 'lucide-react';
 import Link from 'next/link';
 
 const services = [
@@ -30,14 +30,14 @@ const services = [
     icon: Hotel,
     title: 'Hotel Pickup',
     description: 'Direct, uninterrupted transfers from the airport or any city location to major hotels in the Diplomatic Area, resorts in Zallaq, or luxury residences in Amwaj Islands.',
-    href: '/contact',
+    href: '/hotel-pickup',
     decisionCode: 'What to Try'
   },
   {
     icon: UserCheck,
     title: 'Chauffeur Service',
     description: 'Premium chauffeur-driven mobility solutions tailored for special occasions, half-day city tours, and VIP clients demanding an impeccably maintained, odor-free cabin.',
-    href: '/contact',
+    href: '/chauffeur-service',
     decisionCode: 'What to Think'
   },
   {
@@ -55,11 +55,39 @@ const services = [
     decisionCode: 'What to Think'
   },
   {
-    icon: Briefcase,
-    title: 'Specialist Mobility',
-    description: "Bespoke transport protocols for Saudi Causeway Border Transfers, secure Student Transport, and Pet-Friendly relocations. We handle the complex logistics so you don't have to.",
-    href: '/contact',
+    icon: Map,
+    title: 'Saudi Causeway Transfer',
+    description: 'Seamless cross-border transit over the King Fahad Causeway to Dammam, Al Khobar, or Riyadh, with no vehicle switch and all tolls included.',
+    href: '/saudi-causeway',
     decisionCode: 'What to Believe'
+  },
+  {
+    icon: GraduationCap,
+    title: 'Student Transport',
+    description: 'Vetted, background-checked drivers and safety-escorted rides for daily school and university commutes across Bahrain.',
+    href: '/student-transport',
+    decisionCode: 'Who to Follow'
+  },
+  {
+    icon: Dog,
+    title: 'Pet Transport',
+    description: 'Climate-controlled, pet-friendly rides for vet visits, airport relocations, and everyday trips with your furry family members.',
+    href: '/pet-transport',
+    decisionCode: 'What to Trust'
+  },
+  {
+    icon: Briefcase,
+    title: 'Hire-by-Hour / City Tours',
+    description: 'A dedicated driver and vehicle for 4, 8, or 12 hours to explore Manama at your own pace, run multiple errands, or attend back-to-back meetings.',
+    href: '/city-tour',
+    decisionCode: 'What to Try'
+  },
+  {
+    icon: Heart,
+    title: 'Wedding & Event Transport',
+    description: 'Decorated VIP vehicles and coordinated multi-car convoys for weddings, engagements, and special occasions across the Kingdom.',
+    href: '/wedding-transport',
+    decisionCode: 'What to Think'
   },
 ];
 

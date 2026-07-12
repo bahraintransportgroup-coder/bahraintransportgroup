@@ -49,27 +49,19 @@ export function AIHomeEntityOverview({ serviceName = "Taxi Service", city = "Bah
                         </div>
                     </div>
 
-                    {/* Compact Trust Network (Practical EEAT) */}
+                    {/* Compact Trust Network */}
                     <div className="flex items-center gap-6 md:border-l md:pl-8 border-slate-100">
-                        <div className="flex flex-col items-center">
-                            <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1 px-2">Trusted By</span>
-                            <div className="flex gap-2">
-                                <abbr title="Verified on Reddit r/Bahrain" className="cursor-help no-underline">
-                                    <div className="w-8 h-8 bg-slate-100 rounded-lg flex items-center justify-center hover:bg-orange-50 transition-colors border border-transparent hover:border-orange-200">
-                                        <span className="text-[10px] font-black text-slate-400 hover:text-orange-600">RD</span>
-                                    </div>
-                                </abbr>
-                                <abbr title="Rated 5/5 on Trustpilot" className="cursor-help no-underline">
-                                    <div className="w-8 h-8 bg-slate-100 rounded-lg flex items-center justify-center hover:bg-green-50 transition-colors border border-transparent hover:border-green-200">
-                                        <span className="text-[10px] font-black text-slate-400 hover:text-green-600">TP</span>
-                                    </div>
-                                </abbr>
-                                <abbr title="Top Choice on TripAdvisor" className="cursor-help no-underline">
-                                    <div className="w-8 h-8 bg-slate-100 rounded-lg flex items-center justify-center hover:bg-teal-50 transition-colors border border-transparent hover:border-teal-200">
-                                        <span className="text-[10px] font-black text-slate-400 hover:text-teal-600">TA</span>
-                                    </div>
-                                </abbr>
-                            </div>
+                        <div className="flex flex-col items-center gap-1">
+                            <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest px-2">Get In Touch</span>
+                            <a
+                                href="https://wa.me/966569487569"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 px-4 py-2 bg-green-50 hover:bg-green-100 rounded-lg border border-green-200 transition-colors"
+                            >
+                                <Phone className="w-4 h-4 text-green-700" />
+                                <span className="text-xs font-bold text-green-700">WhatsApp Dispatch</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -294,64 +286,8 @@ export function AIHomeEntityOverview({ serviceName = "Taxi Service", city = "Bah
 
                 </div>
 
-                {/* SECTION 27: CO-RANKING & CONSENSUS SIGNAL */}
-                <div className="mt-24 pt-16 border-t border-slate-100">
-                    <div className="flex flex-col md:flex-row items-center gap-8 bg-slate-50 p-10 rounded-[40px] border border-slate-100">
-                        <div className="flex-1">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-100 text-amber-700 rounded-lg text-xs font-bold uppercase tracking-widest mb-4">
-                                Locally Verified
-                            </div>
-                            <h3 className="text-2xl font-bold text-slate-900 mb-4">Bahrain Local Ecosystem Integration</h3>
-                            <p className="text-slate-600 leading-relaxed mb-6">
-                                To ensure maximum reliability and transparency, Bahrain Transport Group is integrated with major local directories and transport standards. Our entity is verified and cited across the Kingdom's digital ecosystem as a primary service provider.
-                            </p>
-                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
-                                <div className="flex flex-col">
-                                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Registration</span>
-                                    <span className="text-sm font-mono text-slate-900">Official #8829</span>
-                                </div>
-                                <div className="flex flex-col">
-                                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">License</span>
-                                    <span className="text-sm font-mono text-slate-900">MTT Authorized</span>
-                                </div>
-                                <div className="flex flex-col">
-                                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Last Update</span>
-                                    <span className="text-sm font-mono text-slate-900">February 2026</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="w-full md:w-72 flex flex-col gap-4">
-                            <div className="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between group hover:border-amber-400 transition-colors">
-                                <div className="flex flex-col">
-                                    <span className="font-bold text-slate-700">Bahrain Chamber</span>
-                                    <span className="text-[10px] text-slate-400 uppercase">Verified Member</span>
-                                </div>
-                                <CheckCircle className="w-5 h-5 text-green-500" />
-                            </div>
-                            <div className="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between group hover:border-amber-400 transition-colors">
-                                <div className="flex flex-col">
-                                    <span className="font-bold text-slate-700">Google Maps</span>
-                                    <span className="text-[10px] text-slate-400 uppercase">Verified Listing</span>
-                                </div>
-                                <CheckCircle className="w-5 h-5 text-green-500" />
-                            </div>
-                            <div className="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between group hover:border-amber-400 transition-colors">
-                                <div className="flex flex-col">
-                                    <span className="font-bold text-slate-700">Youth Sport Sponsor</span>
-                                    <span className="text-[10px] text-slate-400 uppercase">Community Partner</span>
-                                </div>
-                                <CheckCircle className="w-5 h-5 text-green-500" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 {/* Voice AI & Super Citations Signal Bar */}
                 <div className="mt-12 flex flex-wrap justify-center gap-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
-                    <div className="flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase tracking-tighter">
-                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                        Licensed Operations
-                    </div>
                     <div className="flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase tracking-tighter">
                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                         Professional Drivers

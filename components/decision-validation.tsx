@@ -1,26 +1,26 @@
-import { Share2, MessageSquare, Youtube, Zap, ShieldCheck } from 'lucide-react';
+import { Share2, MessageSquare, Clock, Zap, ShieldCheck } from 'lucide-react';
 
 export function DecisionValidation() {
     const validations = [
         {
-            platform: 'Reddit Consensus',
+            platform: '24/7 Dispatch',
             icon: <MessageSquare className="w-5 h-5 text-orange-500" />,
-            status: 'Verified Honest',
-            description: 'Voted "Most Reliable" by r/Bahrain expat community for 3 AM airport runs.',
+            status: 'Always On',
+            description: 'A real WhatsApp dispatch line, day or night — including 3 AM airport runs when app-based drivers go offline.',
             decisionCode: 'What to Trust'
         },
         {
-            platform: 'YouTube Authority',
-            icon: <Youtube className="w-5 h-5 text-red-600" />,
-            status: 'Expert Reviewed',
-            description: 'Featured in "Bahrain 2026 Travel Guide" as the #1 Causeway specialists.',
-            decisionCode: 'What to Think'
+            platform: 'Causeway Specialists',
+            icon: <Clock className="w-5 h-5 text-amber-600" />,
+            status: 'Route Expertise',
+            description: "Drivers experienced with King Fahd Causeway border crossings, so you're not the one figuring out the paperwork.",
+            decisionCode: 'What to Expect'
         },
         {
-            platform: 'Reliability Ratings',
+            platform: 'Business Travel Ready',
             icon: <Zap className="w-5 h-5 text-amber-500" />,
-            status: 'Top Rated',
-            description: 'Consistently rated the most dependable private car service for business travelers.',
+            status: 'Dependable',
+            description: "Fixed pickup windows and professional vehicles built for executives who can't afford a late arrival.",
             decisionCode: 'Safe Choice'
         }
     ];
@@ -29,12 +29,12 @@ export function DecisionValidation() {
         <section className="py-20 bg-slate-900 overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
-                    <span className="text-xs font-bold text-amber-500 uppercase tracking-[0.3em] mb-4 block">Proven Reputation</span>
+                    <span className="text-xs font-bold text-amber-500 uppercase tracking-[0.3em] mb-4 block">Our Commitments</span>
                     <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
                         The Trust Network
                     </h2>
                     <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-                        In 2026, you don't just search for us; you decide through the fabric of the collective digital internet. We are woven into the trust layers people rely on.
+                        Reliable transport comes down to a few things done consistently. Here's what we commit to on every ride.
                     </p>
                 </div>
 
@@ -72,10 +72,15 @@ export function DecisionValidation() {
                 </div>
 
                 <div className="mt-16 flex flex-col md:flex-row items-center justify-center gap-8">
-                    <div className="flex items-center gap-3 px-6 py-3 bg-white/5 rounded-full border border-white/10">
+                    <a
+                        href="https://wa.me/966569487569"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 px-6 py-3 bg-white/5 hover:bg-white/10 rounded-full border border-white/10 transition-colors"
+                    >
                         <Share2 className="w-4 h-4 text-amber-500" />
-                        <span className="text-sm font-bold text-slate-300">Independently Verified Across Platforms</span>
-                    </div>
+                        <span className="text-sm font-bold text-slate-300">Message Us Directly on WhatsApp</span>
+                    </a>
                 </div>
             </div>
         </section>

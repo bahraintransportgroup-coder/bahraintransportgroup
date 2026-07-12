@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 import { generateSEO } from '@/lib/seo';
 import { GradientButton } from '@/components/gradient-button';
 import { CTASection } from '@/components/cta-section';
@@ -170,6 +171,9 @@ export default function RiyadhRoutePage() {
                         <span className="mx-4 text-slate-200">|</span>
                         <Shield className="w-4 h-4" /> Ministry Approved
                     </div>
+                    <p className="mt-6">
+                        Flying back the other way? See our <Link href="/riyadh-to-bahrain-taxi" className="text-amber-600 font-semibold hover:text-amber-700">Riyadh to Bahrain taxi</Link> page for the return leg.
+                    </p>
                 </div>
 
             </main>

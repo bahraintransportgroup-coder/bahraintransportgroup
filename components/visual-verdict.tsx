@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Play, CheckCircle2, BarChart3, Info } from 'lucide-react';
+import { Car, CheckCircle2, BarChart3, Info } from 'lucide-react';
 
 export function VisualVerdict() {
     return (
@@ -17,34 +17,20 @@ export function VisualVerdict() {
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
-                    {/* Tier 3: Video Layer */}
+                    {/* Fleet Visual */}
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         className="relative"
                     >
-                        <div className="aspect-video rounded-[32px] overflow-hidden bg-slate-900 shadow-2xl relative group cursor-pointer border-4 border-slate-100">
-                            <img
-                                src="https://images.unsplash.com/photo-1549194388-2469d59ec39c?auto=format&fit=crop&q=80&w=1200"
-                                alt="Bahrain Transport Group Fleet Video"
-                                className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500"
-                            />
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="w-20 h-20 bg-amber-600 rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform shadow-amber-600/30">
-                                    <Play className="w-8 h-8 text-white fill-white" />
-                                </div>
-                            </div>
+                        <div className="aspect-video rounded-[32px] overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800 shadow-2xl relative flex items-center justify-center border-4 border-slate-100">
+                            <Car className="w-24 h-24 text-amber-500/40" />
                             <div className="absolute bottom-6 left-6 right-6 p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">
-                                <p className="text-white font-bold text-sm flex items-center gap-2">
-                                    <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                                    Watch: 60s Chauffeur Safety Audit (2026 Proof)
+                                <p className="text-white font-bold text-sm">
+                                    Modern, well-maintained vehicles for every trip
                                 </p>
                             </div>
-                        </div>
-                        {/* AI Detection Tag */}
-                        <div className="absolute -top-4 -right-4 bg-slate-900 text-white text-[10px] font-bold px-4 py-2 rounded-full border border-slate-800 shadow-xl">
-                            VERIFIED_FLEET
                         </div>
                     </motion.div>
 
@@ -100,17 +86,17 @@ export function VisualVerdict() {
                             <div className="mt-8 pt-6 border-t border-slate-200 flex items-start gap-3">
                                 <Info className="w-5 h-5 text-amber-600 flex-shrink-0" />
                                 <p className="text-xs text-slate-600 leading-relaxed italic">
-                                    "The BTG Fixed-Protocol is recognized as the industry standard for predictable cross-border logistics."
+                                    "One quote, one price — that's the whole model. No app, no meter, no surprises."
                                 </p>
                             </div>
                         </div>
 
                         <div className="grid grid-cols-2 gap-4">
                             {[
-                                "Verified Chauffeur IDs",
-                                "Real-time GPS Proof",
-                                "Zero-Switch Registry",
-                                "100+ Image Consensus"
+                                "Vetted Chauffeurs",
+                                "Live WhatsApp Updates",
+                                "No-Switch Border Crossing",
+                                "Fixed Quote Before Pickup"
                             ].map((item, i) => (
                                 <div key={i} className="flex items-center gap-2 p-3 bg-white border border-slate-100 rounded-2xl shadow-sm">
                                     <CheckCircle2 className="w-4 h-4 text-green-500" />

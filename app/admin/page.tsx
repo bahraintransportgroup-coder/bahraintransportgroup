@@ -19,6 +19,24 @@ const statusColors: Record<string, string> = {
   cancelled: 'bg-red-500/10 text-red-400 border-red-500/20',
 };
 
+const serviceLabels: Record<string, string> = {
+  airport_transfer: 'Airport Transfer',
+  city_taxi: 'City Taxi',
+  corporate_taxi: 'Corporate',
+  hotel_pickup: 'Hotel Pickup',
+  chauffeur: 'Chauffeur',
+  family_van: 'Family Van',
+  vip_car: 'VIP Car',
+};
+
+function getLast7Days(): string[] {
+  return Array.from({ length: 7 }, (_, i) => {
+    const d = new Date();
+    d.setDate(d.getDate() - (6 - i));
+    return d.toISOString().split('T')[0];
+  });
+}
+
 export default function AdminDashboard() {
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [stats, setStats] = useState<Stats>({ total: 0, pending: 0, confirmed: 0, completed: 0, cancelled: 0 });
@@ -43,6 +61,25 @@ export default function AdminDashboard() {
 
   const recentBookings = bookings.slice(0, 5);
 
+  // Service type breakdown
+  const serviceCounts = bookings.reduce<Record<string, number>>((acc, b) => {
+    const key = b.service_type || 'unknown';
+    acc[key] = (acc[key] || 0) + 1;
+    return acc;
+  }, {});
+  const topServices = Object.entries(serviceCounts)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 5);
+  const maxServiceCount = topServices[0]?.[1] || 1;
+
+  // 7-day booking trend
+  const days = getLast7Days();
+  const dayCounts = days.map((day) => ({
+    label: new Date(day).toLocaleDateString('en', { weekday: 'short' }),
+    count: bookings.filter((b) => b.created_at?.startsWith(day)).length,
+  }));
+  const maxDayCount = Math.max(...dayCounts.map((d) => d.count), 1);
+
   return (
     <div className="space-y-8">
       <div>
@@ -57,6 +94,47 @@ export default function AdminDashboard() {
         <StatCard label="Confirmed" value={stats.confirmed} color="blue" loading={loading} />
         <StatCard label="Completed" value={stats.completed} color="green" loading={loading} />
       </div>
+
+      {/* Analytics Row */}
+      {!loading && bookings.length > 0 && (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* 7-Day Trend */}
+          <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6">
+            <h3 className="text-white font-semibold mb-4">Bookings — Last 7 Days</h3>
+            <div className="flex items-end gap-2 h-28">
+              {dayCounts.map((d) => (
+                <div key={d.label} className="flex-1 flex flex-col items-center gap-1">
+                  <span className="text-xs text-amber-400 font-bold">{d.count || ''}</span>
+                  <div
+                    className="w-full rounded-t bg-amber-500/70 hover:bg-amber-500 transition-all"
+                    style={{ height: `${(d.count / maxDayCount) * 80}px`, minHeight: d.count ? '4px' : '0' }}
+                  />
+                  <span className="text-xs text-gray-500">{d.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Service Breakdown */}
+          <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6">
+            <h3 className="text-white font-semibold mb-4">Top Services</h3>
+            <div className="space-y-3">
+              {topServices.map(([key, count]) => (
+                <div key={key} className="flex items-center gap-3">
+                  <span className="text-xs text-gray-400 w-28 truncate">{serviceLabels[key] || key}</span>
+                  <div className="flex-1 bg-gray-800 rounded-full h-2">
+                    <div
+                      className="bg-amber-500 h-2 rounded-full"
+                      style={{ width: `${(count / maxServiceCount) * 100}%` }}
+                    />
+                  </div>
+                  <span className="text-xs text-gray-400 w-6 text-right">{count}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Recent Bookings */}
       <div className="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden">

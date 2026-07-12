@@ -88,6 +88,7 @@ export default function BookingsPage() {
                   <th className="text-left text-xs font-medium text-gray-500 uppercase px-6 py-3 hidden lg:table-cell">Route</th>
                   <th className="text-left text-xs font-medium text-gray-500 uppercase px-6 py-3 hidden md:table-cell">Service</th>
                   <th className="text-left text-xs font-medium text-gray-500 uppercase px-6 py-3 hidden md:table-cell">Date</th>
+                  <th className="text-left text-xs font-medium text-gray-500 uppercase px-6 py-3 hidden lg:table-cell">Promo</th>
                   <th className="text-left text-xs font-medium text-gray-500 uppercase px-6 py-3">Status</th>
                   <th className="text-left text-xs font-medium text-gray-500 uppercase px-6 py-3">Actions</th>
                 </tr>
@@ -111,6 +112,15 @@ export default function BookingsPage() {
                     <td className="px-6 py-4 hidden md:table-cell">
                       <p className="text-gray-300 text-sm">{booking.pickup_date || '—'}</p>
                       <p className="text-gray-500 text-xs">{booking.pickup_time || ''}</p>
+                    </td>
+                    <td className="px-6 py-4 hidden lg:table-cell">
+                      {booking.promo_code ? (
+                        <span className="text-xs font-medium px-2 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                          {booking.promo_code}
+                        </span>
+                      ) : (
+                        <span className="text-gray-600 text-sm">—</span>
+                      )}
                     </td>
                     <td className="px-6 py-4">
                       <select

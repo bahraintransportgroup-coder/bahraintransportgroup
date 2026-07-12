@@ -21,6 +21,7 @@ export function TestimonialsSection() {
       const { data } = await supabase
         .from('testimonials')
         .select('*')
+        .eq('is_approved', true)
         .order('created_at', { ascending: false })
         .limit(4);
 

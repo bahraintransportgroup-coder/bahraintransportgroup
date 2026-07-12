@@ -8,6 +8,19 @@ interface SEOProps {
   ogImage?: string;
 }
 
+function getLocaleAlternates(canonicalUrl: string) {
+  try {
+    const url = new URL(canonicalUrl);
+    const isAr = url.pathname === '/ar' || url.pathname.startsWith('/ar/');
+    const enPath = isAr ? (url.pathname.replace(/^\/ar/, '') || '/') : url.pathname;
+    const arPath = isAr ? url.pathname : (url.pathname === '/' ? '/ar' : `/ar${url.pathname}`);
+    const base = `${url.protocol}//${url.host}`;
+    return { en: `${base}${enPath}`, ar: `${base}${arPath}` };
+  } catch {
+    return null;
+  }
+}
+
 export function generateSEO({
   title,
   description,
@@ -17,6 +30,7 @@ export function generateSEO({
 }: SEOProps): Metadata {
   const siteName = 'Bahrain Transport Group';
   const fullTitle = `${title} | ${siteName}`;
+  const localeAlternates = canonicalUrl ? getLocaleAlternates(canonicalUrl) : null;
 
   return {
     metadataBase: new URL('https://bahraintransportgroup.com'),
@@ -48,6 +62,11 @@ export function generateSEO({
     },
     alternates: canonicalUrl ? {
       canonical: canonicalUrl.endsWith('/') ? canonicalUrl : `${canonicalUrl}/`,
+      languages: localeAlternates ? {
+        'en': localeAlternates.en,
+        'ar': localeAlternates.ar,
+        'x-default': localeAlternates.en,
+      } : undefined,
     } : undefined,
     robots: {
       index: true,

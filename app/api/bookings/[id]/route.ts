@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
 import { isAdminRequest } from '@/lib/auth';
+import { sendStatusUpdate } from '@/lib/email';
 
 export const runtime = 'nodejs';
 
@@ -26,6 +27,13 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+
+  // Send status update email to customer (non-blocking)
+  if (data?.email && ['confirmed', 'completed', 'cancelled'].includes(status)) {
+    sendStatusUpdate(data, status).catch((err) =>
+      console.error('Status update email failed:', err)
+    );
   }
 
   return NextResponse.json({ data });

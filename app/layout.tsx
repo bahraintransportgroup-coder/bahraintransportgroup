@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Cairo } from 'next/font/google';
+import { headers } from 'next/headers';
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 import { StructuredData } from '@/components/structured-data';
@@ -8,8 +9,10 @@ import { Toaster } from 'sonner';
 
 import { WhatsAppButton } from '@/components/whatsapp-button';
 import { InternalLinks } from '@/components/internal-links';
+import { CookieConsent } from '@/components/cookie-consent';
 
 const inter = Inter({ subsets: ['latin'] });
+const cairo = Cairo({ subsets: ['arabic', 'latin'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://bahraintransportgroup.com'),
@@ -43,26 +46,30 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const locale = headers().get('x-locale') === 'ar' ? 'ar' : 'en';
+  const isArabic = locale === 'ar';
+
   return (
-    <html lang="en">
+    <html lang={locale} dir={isArabic ? 'rtl' : 'ltr'}>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <StructuredData />
       </head>
-      <body className={`${inter.className} bg-background text-foreground antialiased`}>
+      <body className={`${isArabic ? cairo.className : inter.className} bg-background text-foreground antialiased`}>
         <div id="site-header-container">
-          <Navbar />
+          <Navbar locale={locale} />
         </div>
         <main id="main-content-area" className="min-h-screen">
           {children}
         </main>
         <InternalLinks />
         <div id="site-footer-container">
-          <Footer />
+          <Footer locale={locale} />
         </div>
         <Toaster position="top-right" theme="light" />
 
         <WhatsAppButton />
+        <CookieConsent />
       </body>
     </html>
   );

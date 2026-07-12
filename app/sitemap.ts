@@ -27,12 +27,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/blog/bahrain-to-riyadh-flight-vs-taxi',
         '/help-center',
         '/bahrain-to-dammam-taxi',
+        '/dammam-to-bahrain-taxi',
         '/bahrain-to-khobar-taxi',
         '/manama-to-riyadh-taxi',
+        '/riyadh-to-bahrain-taxi',
+        '/bahrain-to-dammam-airport-taxi',
+        '/dammam-airport-to-bahrain-taxi',
         '/fare-calculator',
         '/corporate-travel',
         '/student-transport',
         '/pet-transport',
+        '/hotel-pickup',
+        '/chauffeur-service',
+        '/city-tour',
+        '/wedding-transport',
         '/privacy-policy',
         '/terms-and-conditions',
         '/airports',
@@ -44,6 +52,50 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: new Date(),
         changeFrequency: 'weekly' as const,
         priority: route === '' ? 1.0 : 0.8,
+    }));
+
+    const arPages = [
+        '/ar',
+        '/ar/about',
+        '/ar/airport-transfer',
+        '/ar/city-taxi',
+        '/ar/contact',
+        '/ar/fleet',
+        '/ar/saudi-causeway',
+        '/ar/things-to-do',
+        '/ar/blog',
+        '/ar/blog/bahrain-taxi-prices',
+        '/ar/blog/uber-vs-taxi-bahrain',
+        '/ar/blog/bahrain-airport-transfers-guide',
+        '/ar/blog/top-5-best-taxi-companies-bahrain',
+        '/ar/blog/best-taxi-bahrain-2026',
+        '/ar/blog/best-bahrain-to-riyadh-taxi-2026',
+        '/ar/blog/uber-vs-careem-vs-btg-bahrain',
+        '/ar/blog/saudi-visa-king-fahad-causeway',
+        '/ar/blog/bahrain-to-riyadh-flight-vs-taxi',
+        '/ar/help-center',
+        '/ar/bahrain-to-dammam-taxi',
+        '/ar/dammam-to-bahrain-taxi',
+        '/ar/bahrain-to-khobar-taxi',
+        '/ar/manama-to-riyadh-taxi',
+        '/ar/riyadh-to-bahrain-taxi',
+        '/ar/bahrain-to-dammam-airport-taxi',
+        '/ar/dammam-airport-to-bahrain-taxi',
+        '/ar/fare-calculator',
+        '/ar/corporate-travel',
+        '/ar/student-transport',
+        '/ar/pet-transport',
+        '/ar/hotel-pickup',
+        '/ar/chauffeur-service',
+        '/ar/city-tour',
+        '/ar/wedding-transport',
+        '/ar/privacy-policy',
+        '/ar/terms-and-conditions',
+    ].map((route) => ({
+        url: `${baseUrl}${route}/`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: route === '/ar' ? 0.9 : 0.7,
     }));
 
     const locationPages = getAllSlugs().map((slug) => ({
@@ -60,5 +112,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.9,
     }));
 
-    return [...staticPages, ...locationPages, ...airportPages];
+    return [...staticPages, ...arPages, ...locationPages, ...airportPages];
 }

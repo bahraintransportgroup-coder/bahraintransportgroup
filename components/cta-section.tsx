@@ -5,9 +5,16 @@ import { motion } from 'framer-motion';
 import { Phone, MessageCircle } from 'lucide-react';
 import { GradientButton } from './gradient-button';
 
-export function CTASection() {
+interface CTASectionProps {
+  locale?: 'en' | 'ar';
+}
+
+export function CTASection({ locale = 'en' }: CTASectionProps) {
+  const isArabic = locale === 'ar';
   const pathname = usePathname();
-  const whatsappMsg = `Hello Bahrain Transport Group! I am on this page: https://bahraintransportgroup.com${pathname} and I would like to book a ride.`;
+  const whatsappMsg = isArabic
+    ? `مرحباً بحرين ترانسبورت جروب! أنا في هذه الصفحة: https://bahraintransportgroup.com${pathname} وأرغب في حجز رحلة.`
+    : `Hello Bahrain Transport Group! I am on this page: https://bahraintransportgroup.com${pathname} and I would like to book a ride.`;
   const whatsappLink = `https://wa.me/966569487569?text=${encodeURIComponent(whatsappMsg)}`;
   return (
     <section className="py-20 relative overflow-hidden">
@@ -31,11 +38,11 @@ export function CTASection() {
             className="text-4xl md:text-5xl font-bold mb-6"
           >
             <span className="bg-gradient-to-r from-slate-900 to-slate-800 bg-clip-text text-transparent">
-              Ready to Ride?
+              {isArabic ? 'جاهز للانطلاق؟' : 'Ready to Ride?'}
             </span>
             <br />
             <span className="bg-gradient-to-r from-amber-600 to-orange-700 bg-clip-text text-transparent">
-              Book Your Taxi Today
+              {isArabic ? 'احجز تاكسيك اليوم' : 'Book Your Taxi Today'}
             </span>
           </motion.h2>
 
@@ -46,7 +53,7 @@ export function CTASection() {
             transition={{ delay: 0.3 }}
             className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto"
           >
-            Available 24/7 Near Me for all your transportation needs in Bahrain
+            {isArabic ? 'متوفرون على مدار الساعة لجميع احتياجات التنقل في البحرين' : 'Available 24/7 Near Me for all your transportation needs in Bahrain'}
           </motion.p>
 
           <motion.div
@@ -56,8 +63,8 @@ export function CTASection() {
             transition={{ delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <GradientButton href="/contact" variant="primary">
-              Book Now
+            <GradientButton href={isArabic ? '/ar/contact' : '/contact'} variant="primary">
+              {isArabic ? 'احجز الآن' : 'Book Now'}
             </GradientButton>
             <GradientButton
               href={whatsappLink}
@@ -65,7 +72,7 @@ export function CTASection() {
               external
             >
               <MessageCircle className="w-5 h-5 mr-2" />
-              WhatsApp Now
+              {isArabic ? 'واتساب الآن' : 'WhatsApp Now'}
             </GradientButton>
           </motion.div>
         </motion.div>

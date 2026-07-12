@@ -14,6 +14,8 @@ export interface Booking {
   passengers: number;
   message: string | null;
   status: BookingStatus;
+  promo_code: string | null;
+  discount_amount: number | null;
 }
 
 export interface FleetVehicle {
@@ -49,4 +51,17 @@ export interface ContactMessage {
   subject: string;
   message: string;
   is_read: boolean;
+}
+
+export interface PromoCode {
+  id: string;
+  created_at: string;
+  code: string;
+  discount_type: 'percentage' | 'fixed';
+  discount_value: number;
+  description: string | null;
+  max_uses: number | null;
+  uses_count: number;
+  expires_at: string | null;
+  is_active: boolean;
 }

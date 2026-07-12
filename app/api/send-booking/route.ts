@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { supabaseAdmin } from '@/lib/supabase';
 import { rateLimit } from '@/lib/rate-limit';
+import { sendCustomerConfirmation } from '@/lib/email';
 
 export const runtime = 'nodejs';
 
@@ -32,6 +33,7 @@ export async function POST(req: Request) {
       pickup_time,
       passengers,
       message,
+      promo_code,
     } = body;
 
     if (!name || !email || !phone || !pickup_location || !dropoff_location || !service_type || !pickup_date || !pickup_time) {
@@ -45,24 +47,49 @@ export async function POST(req: Request) {
 
     const passengerCount = Math.max(1, Math.floor(Number(passengers) || 1));
 
+    // Re-validate promo code server-side — never trust the client's earlier /api/promo/validate check
+    let appliedPromo: { id: string; code: string; uses_count: number } | null = null;
+    if (promo_code) {
+      const code = String(promo_code).toUpperCase().trim();
+      const { data: promo } = await supabaseAdmin
+        .from('promo_codes')
+        .select('id, code, is_active, expires_at, max_uses, uses_count')
+        .eq('code', code)
+        .single();
+
+      if (
+        promo &&
+        promo.is_active &&
+        (!promo.expires_at || new Date(promo.expires_at) >= new Date()) &&
+        (promo.max_uses === null || promo.uses_count < promo.max_uses)
+      ) {
+        appliedPromo = promo;
+      }
+    }
+
     // Save to database first — if this fails, abort before sending email
-    const { error: dbError } = await supabaseAdmin.from('bookings').insert([{
-      name,
-      email,
-      phone,
-      pickup_location,
-      dropoff_location,
-      service_type,
-      pickup_date,
-      pickup_time,
-      passengers: passengerCount,
-      message,
-      status: 'pending',
-    }]);
+    const insertData: Record<string, unknown> = {
+      name, email, phone, pickup_location, dropoff_location,
+      service_type, pickup_date, pickup_time,
+      passengers: passengerCount, message, status: 'pending',
+    };
+    if (appliedPromo) insertData.promo_code = appliedPromo.code;
+
+    const { error: dbError } = await supabaseAdmin.from('bookings').insert([insertData]);
 
     if (dbError) {
       console.error('DB insert error:', dbError);
       return NextResponse.json({ error: 'Failed to save booking' }, { status: 500 });
+    }
+
+    if (appliedPromo) {
+      supabaseAdmin
+        .from('promo_codes')
+        .update({ uses_count: appliedPromo.uses_count + 1 })
+        .eq('id', appliedPromo.id)
+        .then(({ error }) => {
+          if (error) console.error('Promo uses_count increment failed:', error);
+        });
     }
 
     const transporter = nodemailer.createTransport({
@@ -150,6 +177,12 @@ ${message || 'None provided'}
     };
 
     await transporter.sendMail(mailOptions);
+
+    // Send confirmation to customer (non-blocking — don't fail the request if this fails)
+    sendCustomerConfirmation({
+      name, email, phone, service_type, pickup_location, dropoff_location,
+      pickup_date, pickup_time, passengers: passengerCount, message,
+    }).catch((err) => console.error('Customer confirmation email failed:', err));
 
     return NextResponse.json({ success: true, message: 'Booking submitted successfully' });
   } catch (error) {
